@@ -1,0 +1,45 @@
+Types of Methods (non-exclusive)
+
+. Fixed Step Method
+Uses always the same step size, does not keep state.
+
+. Adaptive Step Method
+Has a way to estimate the error and to adjust the step depending on that.
+Needs a tolerance to adjust the step.
+Keeps the current step size as state.
+
+. Multi Step Method
+Uses the information from many previous steps.
+Needs the state of the previous steps.
+
+. Implicit Method
+
+. Explicit Method
+
+. Predictor Corrector
+Uses the value of an explicit method for an implicit method.
+Depending on the methods mixed, a lot of calculations may be reused.
+
+.. PECE (Predict-Evaluate-Correct-Evaluate) mode
+Predicts with an explicit method,
+evaluates the derivative at that point,
+corrects with an implicit method and
+evaluates again the derivative using the corrected point.
+
+.. PEC (Predict-Evaluate-Correct) mode
+Predicts with an explicit method,
+evaluates the derivative at that point and
+corrects with an implicit method,
+using for future steps the derivative without correction.
+
+Optimizations
+
+. Optimizations that can make code more difficult to reuse
+
+.. Some values of the method can be already precalculated.
+Calling the method again makes our code slower.
+
+.. Usually, the derivative at the current point can be known.
+Examples: Dormand-Prince, Ricahrdson Extrapolation
+Solution: Hinted methods
+
